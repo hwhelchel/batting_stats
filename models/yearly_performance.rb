@@ -3,7 +3,7 @@ class BattingStatsApp
 
     attr_reader :year, :at_bats, :hits,
     :doubles, :triples, :home_runs,
-    :runs_batted_in
+    :runs_batted_in, :total_bases
 
     def initialize performance
       @year             = performance[:year]
@@ -13,6 +13,7 @@ class BattingStatsApp
       @triples          = performance[:triples]
       @home_runs        = performance[:home_runs]
       @runs_batted_in   = performance[:runs_batted_in]
+      @total_bases      = calc_total_bases
     end
 
     def batting_average
@@ -23,7 +24,7 @@ class BattingStatsApp
       total_bases / at_bats
     end
 
-    def total_bases
+    def calc_total_bases
       hits - doubles - triples - home_runs +
       doubles * 2 + triples * 3 + home_runs * 4
     end
