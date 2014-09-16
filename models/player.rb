@@ -12,17 +12,7 @@ class BattingStatsApp
       @last_name          = demographics[:last_name]
     end
 
-    def batting_average start, finish=nil
-      career.batting_average start, finish
-    end
-
-    def slugging_percentage start, finish=nil
-      career.slugging_percentage start, finish
-    end
-
-    def year date
-      career.year date
-    end
+    delegate [:batting_average, :slugging_percentage, :year] => :career
 
   end
 end

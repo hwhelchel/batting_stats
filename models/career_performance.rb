@@ -25,12 +25,12 @@ class BattingStatsApp
       return year(start).slugging_percentage unless finish
       average_over_range :total_bases, :at_bats, start..finish
 
-      # total = (start..finish).reduce({total_bases: 0, at_bats: 0}) do |total, date|
-      #   total[:total_bases] += year(date).total_bases
-      #   total[:at_bats] += year(date).at_bats
-      # end
+      total = (start..finish).reduce({total_bases: 0, at_bats: 0}) do |total, date|
+        total[:total_bases] += year(date).total_bases
+        total[:at_bats] += year(date).at_bats
+      end
 
-      # total[:total_bases] / total[:at_bats]
+      total[:total_bases] / total[:at_bats]
     end
 
 
